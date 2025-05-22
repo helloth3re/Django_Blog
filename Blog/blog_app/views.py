@@ -66,3 +66,4 @@ def single_view(request, slug):
 
 def contact_view(request):
     return render(request, 'contact.html')
+
