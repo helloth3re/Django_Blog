@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main class="main-content">
+
+					<div class="filter-links filterable-nav">
+						<select class="mobile-filter">
+							<option value="*">Show all</option>
+							{% for category in categories %}
+							<option value=".{{ category.name|slugify }}">{{category.name}}</option>
+							{% endfor %}
+						</select>
+						<a href="#" class="current wow fadeInRight" data-filter="*">Show all</a>
+						{% for category in categories %}
+						<a href="#" class="wow fadeInRight" data-wow-delay=".2s" data-filter=".{{ category.name|slugify }}">{{category.name}}</a>
+						{% endfor %}
+					</div>
+
+					<div class="filterable-items">
+						{% for picture in pictures %}
+						<div class="gallery-item filterable-item {{ picture.category.name|slugify }}">
+							<a href="{{picture.image.url}}">
+								<figure class="featured-image">
+									<img src="{{ picture.image.url }}" alt="">
+									<figcaption>
+										<h3>{{picture.category.name}}</h3>
+										<small>{{picture.description}}</small>
+									</figcaption>
+								</figure>
+							</a>
+						</div>
+						{% endfor %}
+					</div>
+				</main>
+{% endblock %}

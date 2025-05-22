@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+    <title>Photographer Portfolio</title>
+    <!-- Loading third party fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|" rel="stylesheet" type="text/css">
+    <link href="{% static 'fonts/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- Loading main css file -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <!--[if lt IE 9]>
+    <script src="{% static 'js/ie-support/html5.js' %"></script>
+    <script src="{% static 'js/ie-support/respond.js' %"></script>
+    <![endif]-->
+
+</head>
+
+
+<body>
+
+<div id="site-content">
+    <div class="container">
+
+        <header class="site-header">
+            <a href="{% url 'home' %}" id="branding">
+                <img src="{% static 'images/logo.png' %'}" alt="site name' %}" class="logo">
+                <div class="logo-copy">
+                    <h1 class="site-title">NAME SURNAME</h1>
+                    <small class="site-description">Tagline goes here</small>
+                </div>
+            </a>
+
+            <!-- Default snippet for navigation -->
+            <div class="main-navigation">
+                <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                <ul class="menu">
+                    <li class="menu-item"><a href="{% url 'about' %}">about</a></li>
+                    <li class="menu-item"><a href="{% url 'gallery' %}">galery</a></li>
+                    <li class="menu-item"><a href="{% url 'blog' %}">blog</a></li>
+                    <li class="menu-item"><a href="contact.html">contact</a></li>
+                </ul> <!-- .menu -->
+            </div> <!-- .main-navigation -->
+
+            <div class="mobile-navigation"></div>
+        </header>
+
+        {% block content %}
+        {% endblock %}
+
+        <footer class="site-footer">
+            <p class="copy">Copyright 2014 Company Name. designed by Themezy. All rights reserved</p>
+            <div class="social-links">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+
+</body>
+
+</html>

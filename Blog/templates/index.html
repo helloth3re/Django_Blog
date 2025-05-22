@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main class="main-content">
+    <div class="home-slider">
+        <ul class="slides">
+            <li><img src="{% static 'dummy/slide-1.jpg' %}" alt=""></li>
+            <li><img src="{% static 'dummy/slide-2.jpg' %}" alt=""></li>
+            <li><img src="{% static 'dummy/slide-3.jpg' %}" alt=""></li>
+        </ul>
+    </div>
+
+    <div class="blog-posts masonry-layout">
+        {% for post in posts %}
+        <div class="post">
+            <div class="inner-post">
+                <figure class="featured-image"><img src="{{ post.post_display.url }}" alt=""></figure>
+                <div class="entry-detail">
+                    <h2 class="entry-title"><a href="{% url 'single' post.slug %}">{{post.title}}.</a></h2>
+                    <div class="entry-summary"></div>
+                    <div class="entry-meta"><span class="entry-date"><img src="{% static 'images/icon-calendar.png' %}"
+                                                                          alt=""> 28 September 2014</span><span
+                            class="entry-comment"><img src="images/icon-comment.png" alt=""> 6 Comments</span></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main class="main-content">
+
+    <div class="row">
+        <div class="blog-post col-md-9">
+            {% for post in page_obj %}
+            <article class="post">
+                <figure class="featured-image"><img src="{{post.post_display.url}}" alt=""></figure>
+                <div class="entry-detail">
+                    <h2 class="entry-title"><a href="{% url 'single' post.slug %}">{{post.title}}</a></h2>
+                    <div class="entry-summary">{{post.summary}}
+                    </div>
+                    <div class="entry-meta"><span class="entry-date"><img src="{% static 'images/icon-calendar.png' %}" alt="">10 September 2014</span><span
+                            class="comments-count"><img src="{% static 'images/icon-comment.png' %}" alt="">3 Comments</span></div>
+                </div>
+            </article>
+            {% endfor %}
+            <div class="text-center">
+                <div class="dataTables_paginate paging_simple_numbers">
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                        <li class="paginate_button page-item previous">
+                            <a href="?page={{ page_obj.previous_page_number }}" class="more-post">Previous</a>
+                        </li>
+                        {% else %}
+                        <li class="paginate_button page-item previous disabled">
+                            <a href="#" class="more-post">Previous</a>
+                        </li>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                        <li class="paginate_button page-item active">
+                            <a href="#" class="more-post active">{{ num }}</a>
+                        </li>
+                        {% else %}
+                        <li class="paginate_button page-item">
+                            <a href="?page={{ num }}" class="more-post">{{ num }}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                        <li class="paginate_button page-item next">
+                            <a href="?page={{ page_obj.next_page_number }}" class="more-post">Next</a>
+                        </li>
+                        {% else %}
+                        <li class="paginate_button page-item next disabled">
+                            <a href="#" class="more-post">Next</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="aside siderbar col-md-3">
+            <div class="widget">
+                <h3 class="widget-title">Categories</h3>
+                <ul class="bullet">
+                    {% for category in categories %}
+                    <li><a href="{% url 'blog_by_category' category.slug %}">{{category.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="widget recent-posts-widget">
+                <h3 class="widget-title">Recent Posts</h3>
+                <ul>
+                    {% for recent in recents %}
+                    <li>
+                        <h4 class="entry-title"><a href="{% url 'single' recent.slug %}">{{recent.title}}</a></h4>
+                        <small class="date">{{recent.created_at}}</small>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="widget recent-photos-widget">
+                <h3 class="widget-title">Recent Photos</h3>
+                <a href="#"><img src="dummy/small-thumbnail-1.jpg" alt=""></a>
+                <a href="#"><img src="dummy/small-thumbnail-2.jpg" alt=""></a>
+                <a href="#"><img src="dummy/small-thumbnail-3.jpg" alt=""></a>
+                <a href="#"><img src="dummy/small-thumbnail-4.jpg" alt=""></a>
+                <a href="#"><img src="dummy/small-thumbnail-5.jpg" alt=""></a>
+                <a href="#"><img src="dummy/small-thumbnail-6.jpg" alt=""></a>
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock %}

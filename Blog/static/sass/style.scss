@@ -1,0 +1,22 @@
+/*!
+ * Project_Name: Themezy Photographer Portfolio
+ * Author: Themezy
+ * Email: info@themezy.com
+ * URL: http://themezy.com
+ */
+
+/*=========================================== 
+ * Importing CSS Libraries
+ *===========================================*/
+ @use "libs/settings";
+ @use "libs/mixins";
+ @use "libs/normalize";
+ @use "libs/global";
+ @use "libs/components";
+ @use "libs/bootstrap-grid/settings" as settings2;
+ @use "libs/bootstrap-grid/mixins" as mixins2;
+ @use "libs/bootstrap-grid/grid";
+ @use "layout/header";
+ @use "layout/content";
+ @use "layout/footer";
+			
