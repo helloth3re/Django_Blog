@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="main-content">
+
+    <div class="filter-links dashboard-nav">
+        <select class="dashboard-filter">
+            <option value="{% url 'dashboard' %}">My Articles</option>
+            <option value="#">Add Article</option>
+<!--            <option value="#">Add Post</option>-->
+<!--            <option value="#">Nature</option>-->
+        </select>
+        <a href="{% url 'dashboard' %}" class="current wow fadeInRight">My Articles</a>
+        <a href="{% url 'add_article' %}" class="wow fadeInRight" data-wow-delay=".2s">Add Article</a>
+<!--        <a href="#" class="wow fadeInRight" data-wow-delay=".4s">Add Post</a>-->
+<!--        <a href="#" class="wow fadeInRight" data-wow-delay=".6s">Nature</a>-->
+    </div>
+    {% block dash %}
+    {% endblock %}
+</main>
+{% endblock %}

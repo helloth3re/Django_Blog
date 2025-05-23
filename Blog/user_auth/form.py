@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import authenticate
-
+from django.shortcuts import redirect
 
 class EmailLoginForm(forms.Form):
     email = forms.EmailField()

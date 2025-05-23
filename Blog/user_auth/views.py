@@ -6,19 +6,23 @@ from pyexpat.errors import messages
 
 
 # Create your views here.
+from user_auth.form import EmailLoginForm
 
-def login_view(request):
-    if request.method == "POST":
-        email = request.POST.get("email")
-        password = request.POST.get("password")
+from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect
 
-        user = authenticate(request, email=email, password=password)
+class CustomLoginView(LoginView):
+    template_name = 'Auth/login.html'  # your custom template
+    authentication_form = EmailLoginForm
 
-        if user is not None:
-            login(request, user)
-            messages.success(request, 'LOGIN SUCCESS')
+    def get_success_url(self):
+        user = self.request.user
+        if user.is_superuser:
+            return '/admin/'  # Django admin dashboard
         else:
-            messages.error(request, 'Invalid Credentials')
+            return '/dashboard/'  # Your custom dashboard
 
-    return render(request, 'Auth/login.html')
 
+def logout_view(request):
+    logout(request)
+    return render(request, 'index.html')
