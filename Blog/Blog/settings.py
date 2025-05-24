@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog_app',
     'user_auth',
+    'ckeditor', #pip install django-ckeditor, text editor for Post
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -116,6 +118,8 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 
 

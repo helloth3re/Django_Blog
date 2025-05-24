@@ -89,7 +89,7 @@ def article_add(request):
             post.author = request.user  # Set the author to the logged-in user
             post.save()
             form.save_m2m()  # Save tags (many-to-many)
-            return redirect('blog')  # Redirect after successful save
+            return redirect('dashboard')  # Redirect after successful save
     else:
         form = PostForm()
     return render(request, 'user-dash/add-article.html', {'form': form})
@@ -106,3 +106,8 @@ def article_edit(request, slug):
         form = PostForm(instance=post)  # pre-fill with existing data
 
     return render(request, 'user-dash/edit-article.html', { "form": form })
+@login_required
+def article_delete(request, slug):
+    article = get_object_or_404(Post, slug=slug, author=request.user)
+    article.delete()
+    return redirect('dashboard')

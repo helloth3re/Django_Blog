@@ -5,7 +5,10 @@ from user_auth.models import CustomUser
 
 from django.utils.text import slugify
 
+from ckeditor.fields import RichTextField
+
 from django.conf import settings
+
 
 # Create your models here.
 
@@ -55,8 +58,8 @@ class Post(models.Model):
         ('archived', 'Archived'),
     ]
     title = models.CharField(max_length=255)
-    summary = models.TextField(blank=True, null=True)
-    content = models.TextField()
+    summary = RichTextField(blank=True, null=True)
+    content = RichTextField()
     post_display = models.ImageField(upload_to='post_image/img')
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='post_author')

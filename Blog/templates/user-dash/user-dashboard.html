@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+<script src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
 <main class="main-content">
 
     <div class="filter-links dashboard-nav">
