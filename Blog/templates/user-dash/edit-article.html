@@ -1,0 +1,18 @@
+{% extends 'user-dash/user-dashboard.html' %}
+{% block dash %}
+
+<form method="POST" enctype="multipart/form-data" class="post-form">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form-row">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+                <div class="error">{{ field.errors }}</div>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+{% endblock %}
