@@ -30,8 +30,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog_app',
     'user_auth',
+    'api',
+    'rest_framework', # For Building REST Api
     'ckeditor', #pip install django-ckeditor, text editor for Post
     'ckeditor_uploader',
+
 ]
 
 MIDDLEWARE = [

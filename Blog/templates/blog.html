@@ -10,9 +10,9 @@
                 <figure class="featured-image"><img src="{{post.post_display.url}}" alt=""></figure>
                 <div class="entry-detail">
                     <h2 class="entry-title"><a href="{% url 'single' post.slug %}">{{post.title}}</a></h2>
-                    <div class="entry-summary">{{post.summary}}
+                    <div class="entry-summary">{{post.summary|safe}}
                     </div>
-                    <div class="entry-meta"><span class="entry-date"><img src="{% static 'images/icon-calendar.png' %}" alt="">10 September 2014</span><span
+                    <div class="entry-meta"><span class="entry-date"><img src="{% static 'images/icon-calendar.png' %}" alt="">{{post.created_at}}</span><span
                             class="comments-count"><img src="{% static 'images/icon-comment.png' %}" alt="">3 Comments</span></div>
                 </div>
             </article>

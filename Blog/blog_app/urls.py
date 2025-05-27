@@ -20,5 +20,7 @@ urlpatterns = [
     path('add_article/', views.article_add, name="add_article"),
     path('edit_article/<str:slug>', views.article_edit, name="edit_article"),
     path('delete_article/<str:slug>', views.article_delete, name="delete_article"),
+    path('others/', views.others, name="others"),
+    path('other_delete/<str:slug>', views.other_delete, name="other_delete")
 
 ]

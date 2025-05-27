@@ -4,9 +4,9 @@
 <main class="main-content">
     <div class="home-slider">
         <ul class="slides">
-            <li><img src="{% static 'dummy/slide-1.jpg' %}" alt=""></li>
-            <li><img src="{% static 'dummy/slide-2.jpg' %}" alt=""></li>
-            <li><img src="{% static 'dummy/slide-3.jpg' %}" alt=""></li>
+            {% for banner in banners %}
+            <li><img src={{ banner.banner_image.url }} alt=""></li>
+            {% endfor %}
         </ul>
     </div>
 

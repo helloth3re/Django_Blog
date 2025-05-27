@@ -1,4 +1,5 @@
-from lib2to3.fixes.fix_input import context
+from django.contrib.auth.decorators import user_passes_test
+
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
@@ -14,19 +15,28 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 def home_view(request):
-    posts = list(Post.objects.all()) #retrieves all post
+    posts = list(Post.objects.filter(status='published')) #retrieves all post
+    banners = Banner.objects.all()[:4]
 
     shuffle(posts) #shuffles posts
 
     posts = posts[:10] #splits 10 posts
 
     context = {
-        'posts': posts
+        'posts': posts,
+        'banners': banners
     }
     return render(request, 'index.html', context)
 
 def about_view(request):
-    return render(request, 'about.html')
+    user = request.user
+    user_detail = get_object_or_404(Author, user=user)
+
+    context = {
+        "user_detail": user_detail
+    }
+
+    return render(request, 'about.html', context)
 
 def gallery_view(request):
     pictures = Gallery.objects.all()
@@ -44,9 +54,9 @@ def blog_view(request, slug=None):
     recents = Post.objects.order_by('created_at')[:5]
     if slug:
         category = get_object_or_404(Category, slug=slug)
-        posts = Post.objects.filter(categories=category)
+        posts = Post.objects.filter(categories=category, status='published')
     else:
-        posts = Post.objects.all()
+        posts = Post.objects.filter(status='published')
 
     p = Paginator(posts, 5) #4post per page
     page_num = request.GET.get('page')
@@ -111,3 +121,16 @@ def article_delete(request, slug):
     article = get_object_or_404(Post, slug=slug, author=request.user)
     article.delete()
     return redirect('dashboard')
+
+def others(request):
+    banners = Banner.objects.all()
+
+    context = {
+        'banners': banners,
+    }
+    return render(request, 'user-dash/others.html', context)
+@user_passes_test(lambda u: u.is_superuser)
+def other_delete(request, slug):
+    banner = get_object_or_404(Banner, slug=slug)
+    banner.delete()
+    return redirect('others')

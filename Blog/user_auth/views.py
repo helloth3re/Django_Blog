@@ -18,11 +18,11 @@ class CustomLoginView(LoginView):
     def get_success_url(self):
         user = self.request.user
         if user.is_superuser:
-            return '/admin/'  # Django admin dashboard
+            return '/dashboard/'  # Django admin dashboard
         else:
             return '/dashboard/'  # Your custom dashboard
 
 
 def logout_view(request):
     logout(request)
-    return render(request, 'index.html')
+    return redirect('home')

@@ -64,8 +64,8 @@ class Post(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='post_author')
 
-    categories = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='post_category', blank=True)
-    tags = models.ManyToManyField(Tag, related_name='post_tag', blank=True)
+    categories = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='post_category', blank=False)
+    tags = models.ManyToManyField(Tag, related_name='post_tag', blank=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -87,6 +87,19 @@ class Gallery(models.Model):
     description = models.CharField(max_length=255, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, related_name='gallery_category')
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+class Banner(models.Model):
+    name = models.CharField(max_length=50, blank=False)
+    banner_image = models.ImageField(upload_to='banner_images/img')
+    slug = models.SlugField(max_length=270, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

@@ -1,83 +1,99 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'user-dash/user-dashboard.html' %}
+{% block dash %}
 <main class="main-content">
-					<div class="page">
-						<figure class="pull-left">
-							<img src="dummy/figure-about.jpg" alt="">
-						</figure>
-						<div class="entry-content">
-							<h2 class="entry-title">Hi, my name is Name Surname</h2>
-							<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident nemo enim voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.</p>
-							<p>Animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae..</p>
-						</div>
-					</div>
+    <div class="page">
+        <figure class="pull-left">
+            <img src="{{user_detail.profile_picture.url}}" alt="">
+        </figure>
+        <div class="entry-content">
+            <h2 class="entry-title">Hi, my name is {{user_detail.name}}</h2>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+                atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident nemo
+                enim voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
+                qui ratione voluptatem.</p>
+            <p>Animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam
+                libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+                placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem
+                quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae
+                sint et molestiae non recusandae..</p>
+        </div>
+    </div>
 
-					<div class="feature-section">
-						<div class="row">
-							<div class="col-md-3">
-								<div class="feature">
-									<img src="images/icon-camera.png" class="feature-icon">
-									<h3 class="feature-title">Dolor relellendus</h3>
-									<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus quod maxime placeat.</p>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="feature">
-									<img src="images/icon-camcoder.png" class="feature-icon">
-									<h3 class="feature-title">Tempora incidunt</h3>
-									<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus quod maxime placeat.</p>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="feature">
-									<img src="images/icon-film-roll.png" class="feature-icon">
-									<h3 class="feature-title">Porro quisquam</h3>
-									<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus quod maxime placeat.</p>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="feature">
-									<img src="images/icon-polaroid.png" class="feature-icon">
-									<h3 class="feature-title">Placeat possimus</h3>
-									<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus quod maxime placeat.</p>
-								</div>
-							</div>
-						</div>
-					</div> <!-- .feature-section -->
+    <div class="feature-section">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="feature">
+                    <img src="images/icon-camera.png" class="feature-icon">
+                    <h3 class="feature-title">Dolor relellendus</h3>
+                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus quod
+                        maxime placeat.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="feature">
+                    <img src="images/icon-camcoder.png" class="feature-icon">
+                    <h3 class="feature-title">Tempora incidunt</h3>
+                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus quod
+                        maxime placeat.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="feature">
+                    <img src="images/icon-film-roll.png" class="feature-icon">
+                    <h3 class="feature-title">Porro quisquam</h3>
+                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus quod
+                        maxime placeat.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="feature">
+                    <img src="images/icon-polaroid.png" class="feature-icon">
+                    <h3 class="feature-title">Placeat possimus</h3>
+                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus quod
+                        maxime placeat.</p>
+                </div>
+            </div>
+        </div>
+    </div> <!-- .feature-section -->
 
-					<div class="quote-slider">
-						<ul class="slides">
-							<li>
-								<blockquote>
-									<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos ratione voluptatem</p>
-									<span><cite>Jessica Gray</cite>, Photographer</span>
-								</blockquote>
-							</li>
-							<li>
-								<blockquote>
-									<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos ratione voluptatem</p>
-									<span><cite>Jessica Gray</cite>, Photographer</span>
-								</blockquote>
-							</li>
-							<li>
-								<blockquote>
-									<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos ratione voluptatem</p>
-									<span><cite>Jessica Gray</cite>, Photographer</span>
-								</blockquote>
-							</li>
-							<li>
-								<blockquote>
-									<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos ratione voluptatem</p>
-									<span><cite>Jessica Gray</cite>, Photographer</span>
-								</blockquote>
-							</li>
-							<li>
-								<blockquote>
-									<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos ratione voluptatem</p>
-									<span><cite>Jessica Gray</cite>, Photographer</span>
-								</blockquote>
-							</li>
-						</ul>
-					</div> <!-- .quote-slider -->
-				</main>
+    <div class="quote-slider">
+        <ul class="slides">
+            <li>
+                <blockquote>
+                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
+                        magni dolores eos ratione voluptatem</p>
+                    <span><cite>Jessica Gray</cite>, Photographer</span>
+                </blockquote>
+            </li>
+            <li>
+                <blockquote>
+                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
+                        magni dolores eos ratione voluptatem</p>
+                    <span><cite>Jessica Gray</cite>, Photographer</span>
+                </blockquote>
+            </li>
+            <li>
+                <blockquote>
+                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
+                        magni dolores eos ratione voluptatem</p>
+                    <span><cite>Jessica Gray</cite>, Photographer</span>
+                </blockquote>
+            </li>
+            <li>
+                <blockquote>
+                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
+                        magni dolores eos ratione voluptatem</p>
+                    <span><cite>Jessica Gray</cite>, Photographer</span>
+                </blockquote>
+            </li>
+            <li>
+                <blockquote>
+                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
+                        magni dolores eos ratione voluptatem</p>
+                    <span><cite>Jessica Gray</cite>, Photographer</span>
+                </blockquote>
+            </li>
+        </ul>
+    </div> <!-- .quote-slider -->
+</main>
 {% endblock %}
